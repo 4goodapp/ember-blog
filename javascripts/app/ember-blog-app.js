@@ -58,6 +58,17 @@ EmberBlog.BlogPostsNewRoute = Ember.Route.extend({
   }
 });
 
+// Index controller
+EmberBlog.IndexController = Ember.Controller.extend({
+  postsCount: 0,
+  init: function() {
+    cntrl = this;
+    this.store.find('BlogPost').then(function(posts) {
+      cntrl.set('postsCount', posts.get('length'));
+    });
+  }
+});
+
 // Add some fixtures
 EmberBlog.BlogPost.FIXTURES = [
   { id: '1', title: 'RWX Rocks!', body: "We're learning Ember" },
