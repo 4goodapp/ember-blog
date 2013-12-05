@@ -43,3 +43,7 @@ body {
 code {
   font-size: 80%;
 }
+
+ul.comments {
+  list-style-type: none;
+}
