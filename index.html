@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   <title>Ember Step by Step</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="styles/bootstrap.css" rel="stylesheet">
+  <link href="styles/style.css" rel="stylesheet">
 </head>
 <body> 
   <script type="text/x-handlebars" data-template-name="index">
-    <h1>Dashboard</h1>
+    <div class="page-header">
+	    <h1>Dashboard</h1>
+	  </div>
+	
     <div>{{#linkTo 'BlogPosts'}}Posts{{/linkTo}}</div>
   </script>
   
   <script type="text/x-handlebars" data-template-name="BlogPosts">
-    <h1>Posts</h1>
+    <div class="page-header">
+	    <h1>Posts</h1>
+	  </div>
   
-    <table>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Title</th>
@@ -31,30 +41,32 @@
     </table>  
     
     <div>{{#linkTo 'index'}}Dashboard{{/linkTo}}</div>
-    <div>{{#linkTo 'BlogPosts.new'}}Create a new post{{/linkTo}}</div>
+    <div>{{#linkTo 'BlogPosts.new' class='btn btn-primary btn-lg active' role='button'}}New Post{{/linkTo}}</div>
 
     {{outlet}} 
   </script>
 
   <script type="text/x-handlebars" data-template-name="BlogPosts/new">
-    <h1>New Post</h1>
+	  <div class="page-header">
+	    <h1>New Post</h1>
+	  </div>
   
-    <form>
-      <div>
-        <label>Title</label>
-        {{view Em.TextField elementId='title' valueBinding='content.title' placeholder='Enter Title'}}
-      </div>
+		<form role="form">
+		  <div class="form-group">
+		    <label for='title'>Title</label>
+		    {{view Em.TextField elementId='title' valueBinding='content.title' placeholder='Enter Title' class='form-control'}}
+		  </div>
 
-      <div>
-        <label>Body</label>
-        {{view Em.TextArea elementId='body' valueBinding='content.body' placeholder='Enter Body' rows='3'}}
-      </div>
+		  <div class="form-group">
+		    <label for='body'>Body</label>
+		    {{view Em.TextArea elementId='body' valueBinding='content.body' placeholder='Enter Body' rows='3' class='form-control'}}
+		  </div>
 
-      <div>
-        <button type="submit" {{action save content}}>Save</button>
-        <button type="submit" {{action cancel content}}>Cancel</button>
-      </div>
-    </form>
+	    <div class="form-group">
+	      <button type="submit" class="btn btn-default" {{action save content}}>Save</button>
+	      <button type="button" class="btn btn-primary" {{action cancel content}}>Cancel</button>
+	    </div>
+		</form>
   </script>
   
   <!-- JAVASCRIPTS -->
@@ -62,6 +74,7 @@
   <script src="javascripts/lib/handlebars-1.1.2.js"></script>
   <script src="javascripts/lib/ember-1.2.0.js"></script>
   <script src="javascripts/lib/ember-data-1.0.0-beta.4.js"></script>
+  <script src="javascripts/lib/bootstrap-3.0.2.js"></script>
 
   <script src="javascripts/app/ember-blog-app.js"></script>
 </body>
