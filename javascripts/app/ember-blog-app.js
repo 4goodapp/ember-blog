@@ -111,6 +111,9 @@ EmberBlog.CommentsNewController = Ember.ObjectController.extend({
         post.get('comments').pushObject(comment);
       });
       this.get('target').transitionTo('BlogPost.index');
+    },
+    cancel: function() {
+      this.get('target').transitionTo('BlogPost.index');  
     }
   }
 });
