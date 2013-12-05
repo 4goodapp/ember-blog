@@ -36,6 +36,28 @@ EmberBlog.BlogPostsRoute = Ember.Route.extend({
   }
 });
 
+// BlogPosts New Route, creates a new BlogPost
+EmberBlog.BlogPostsNewRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.createRecord('BlogPost');
+  },
+  actions: {
+    save: function() {
+      var route = this;
+      this.get('currentModel').save().then(function(post) {
+        route.transitionTo('BlogPosts.index');
+      }, function(post) {  
+        console.log('Error saving post: ' + post.get('title'));
+        route.transitionTo('BlogPosts');
+      });
+    },
+    cancel: function() {
+      this.get('currentModel').deleteRecord();
+      this.transitionTo('BlogPosts');
+    }
+  }
+});
+
 // Add some fixtures
 EmberBlog.BlogPost.FIXTURES = [
   { id: '1', title: 'RWX Rocks!', body: "We're learning Ember" },

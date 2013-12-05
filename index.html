@@ -39,7 +39,22 @@
   <script type="text/x-handlebars" data-template-name="BlogPosts/new">
     <h1>New Post</h1>
   
-    <div>{{#linkTo 'BlogPosts.index'}}Cancel{{/linkTo}}</div>
+    <form>
+      <div>
+        <label>Title</label>
+        {{view Em.TextField elementId='title' valueBinding='content.title' placeholder='Enter Title'}}
+      </div>
+
+      <div>
+        <label>Body</label>
+        {{view Em.TextArea elementId='body' valueBinding='content.body' placeholder='Enter Body' rows='3'}}
+      </div>
+
+      <div>
+        <button type="submit" {{action save content}}>Save</button>
+        <button type="submit" {{action cancel content}}>Cancel</button>
+      </div>
+    </form>
   </script>
   
   <!-- JAVASCRIPTS -->
