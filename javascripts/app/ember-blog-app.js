@@ -22,6 +22,18 @@ EmberBlog.BlogPost = DS.Model.extend({
   body: DS.attr('string')
 });
 
+// Application Router
+EmberBlog.Router.map(function() {
+  this.resource('BlogPosts', { path: '/posts' });
+});
+
+// BlogPosts Route retrieves all BlogPosts
+EmberBlog.BlogPostsRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.find('BlogPost');
+  }
+});
+
 // Add some fixtures
 EmberBlog.BlogPost.FIXTURES = [
   { id: '1', title: 'RWX Rocks!', body: "We're learning Ember" },
