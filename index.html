@@ -64,7 +64,7 @@
       <tbody>
         {{#each controller}} 
           <tr>
-            <td>{{title}}</td>
+            <td>{{#linkTo "BlogPost" this}}{{title}}{{/linkTo}}</td>
             <td>{{body}}</td>
           </tr>
         {{/each}}
@@ -97,6 +97,22 @@
 	      <button type="button" class="btn btn-primary" {{action cancel content}}>Cancel</button>
 	    </div>
 		</form>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="BlogPost">
+	  <div class="page-header">
+	    <h1>{{title}}</h1>
+	  </div>
+    
+    <div>
+    {{body}}
+    </div>
+
+    <hr>
+
+    <div>
+    {{#linkTo 'BlogPosts' class='btn btn-default'}}Back{{/linkTo}}
+    </div>
   </script>
   
   <!-- JAVASCRIPTS -->

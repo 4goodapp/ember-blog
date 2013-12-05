@@ -27,6 +27,9 @@ EmberBlog.Router.map(function() {
   this.resource('BlogPosts', { path: '/posts' }, function() {
     this.route('new');
   });
+  this.resource('BlogPost', { 
+    path: '/posts/:post_id' 
+  });
 });
 
 // BlogPosts Route retrieves all BlogPosts
@@ -55,6 +58,13 @@ EmberBlog.BlogPostsNewRoute = Ember.Route.extend({
       this.get('currentModel').deleteRecord();
       this.transitionTo('BlogPosts');
     }
+  }
+});
+
+// BlogPost 'show' Route 
+EmberBlog.BlogPostRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.find('BlogPost', params.post_id);
   }
 });
 
