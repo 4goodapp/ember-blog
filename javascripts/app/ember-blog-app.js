@@ -24,7 +24,9 @@ EmberBlog.BlogPost = DS.Model.extend({
 
 // Application Router
 EmberBlog.Router.map(function() {
-  this.resource('BlogPosts', { path: '/posts' });
+  this.resource('BlogPosts', { path: '/posts' }, function() {
+    this.route('new');
+  });
 });
 
 // BlogPosts Route retrieves all BlogPosts
